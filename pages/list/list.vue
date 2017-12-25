@@ -1,8 +1,6 @@
 <template>
   <section class="container">
-      <h2 class="list">
-       列表页面
-      </h2>
+        <mt-header fixed title="电商应用"></mt-header>
   </section>
 </template>
 

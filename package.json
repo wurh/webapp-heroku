@@ -14,6 +14,8 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "axios": "^0.16.1",
+    "mint-ui": "^2.2.13",
     "nuxt": "^1.0.0-rc11"
   },
   "devDependencies": {

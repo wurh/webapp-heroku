@@ -121,5 +121,8 @@ layoutImg.off {
     min-height: 1rem;
     display: inline-block;
 }
+.index-topics-last div{
+  text-align: center
+}
 </style>
 

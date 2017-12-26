@@ -3,24 +3,24 @@
         <mt-header fixed title="电商应用"></mt-header>
      <section id="list-list" class="list-list">
         <ul class="list-ul clearfix">
-          <li data-remaintime="" data-productcount="11 " data-issoldout="1" data-productid="V0031420801">
-              <a href="https://us.vip.com/black-plain-middle-heeled-medium-warm-women-s-martin-boots_pV0031420801">
+          <li v-for="item in items" :key="item.productId" data-remaintime="" data-productcount="11 " data-issoldout="1" :data-productid="item.productId">
+              <div @click="onDetail" :data-productid="item.productId">
                   <div class="imgBox">
-                      <div href="https://us.vip.com/black-plain-middle-heeled-medium-warm-women-s-martin-boots_pV0031420801">
+                      <div>
                           <div class="layoutImg off">VIPshop</div>
                       </div>
-                      <div href="https://us.vip.com/black-plain-middle-heeled-medium-warm-women-s-martin-boots_pV0031420801">
-                          <img src="https://img-global.vip.com/product/V0031420801-1-368X464-1511380932168.jpg" data-src="https://img-global.vip.com/product/V0031420801-1-368X464-1511380932168.jpg" data-width="224" data-height="283" alt="Black Plain Middle Heeled Medium Warm Women's Martin Boots" data-pin-url="https://us.vip.com/black-plain-middle-heeled-medium-warm-women-s-martin-boots_pV0031420801" data-pin-media="https://img-global.vip.com/product/V0031420801-1-1100X1390-1511380932168.jpg" data-pin-description="#VIPshop Black Plain Middle Heeled Medium Warm Women's Martin Boots❤ Get more outfit ideas and style inspiration from fashion designers at VIP.com." style="display: inline-block;">
+                      <div>
+                          <img :src="item.originalImage"  data-width="224" data-height="283" :alt="item.productName" style="display: inline-block;">
                       </div>
                   </div>
                   <div class="list-flex">
                       <div class="list-flex01">
-                                  <p class="goodsTitle"><span class="goodsPrice">$24.99</span><span class="pastPrice">$62</span></p>
-                          <span class="price-off">-60%</span>
+                                  <p class="goodsTitle"><span class="goodsPrice">${{item.sellPrice}}</span><span class="pastPrice">${{item.marketPrice}}</span></p>
+                          <span class="price-off">-{{item.discount}}</span>
                       </div>
-                      <p class="goodsName">Black Plain Middle Heeled Medium Warm Women's Martin Boots</p>
+                      <p class="goodsName">{{item.productName}}</p>
                   </div>
-              </a>
+              </div>
           </li>
         </ul>
     </section>
@@ -30,7 +30,16 @@
 <script>
 import listData from "../../mock/list"
 export default {
-
+    data(){
+        return{
+            items:listData.items
+        }
+    },
+    methods:{
+        onDetail(){
+            console.log('to Detail!!');
+        }
+    }
 }
 </script>
 
@@ -113,7 +122,10 @@ a {
     display: -webkit-box;
     padding-top: 0;
     color: #000;
-    padding-top: .4rem;
+    padding: .4rem;
+}
+.list-flex01 .goodsTitle {
+    -webkit-box-flex: 1;
 }
 .list-flex .goodsName {
     display: -webkit-box;
@@ -131,5 +143,21 @@ a {
     word-break: break-word;
     margin-bottom: 1.5rem;
     padding-top: .5rem;
+}
+.goodsPrice {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1.19rem;
+    margin-bottom: .13rem;
+}
+.goodsTitle .pastPrice {
+    color: #999;
+    text-decoration: line-through;
+}
+.price-off {
+    font-size: .88rem;
+    color: #ec008c;
 }
 </style>

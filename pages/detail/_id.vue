@@ -18,6 +18,14 @@
                         <h2 class="price">$24.99</h2><del class="market-price">$62</del><span class="discount">-60%</span>
             </div>
         </section>
+        <div class="button-gropu">
+            <div class="buttom-item">
+                <mt-button class="btn-item" type="default">Shop Cart</mt-button>
+            </div>
+            <div class="buttom-item">
+                <mt-button class="btn-item" type="danger">Add to Bag</mt-button>
+            </div>
+        </div>
       </div>
   </section>
 </template>
@@ -139,5 +147,23 @@ export default {
     color: #333;
     height: 1rem;
     font-size: .88rem;
+}
+
+.button-gropu{
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    display: -webkit-box;
+}
+
+.buttom-item{
+    -webkit-box-flex: 1;
+    width: 0;
+    line-height: 40px;
+}
+
+.btn-item{
+    width: 100%;
 }
 </style>

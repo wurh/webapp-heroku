@@ -1,6 +1,10 @@
 <template>
   <section class="container">
-        <mt-header fixed title="电商应用"></mt-header>
+        <mt-header fixed title="列表页">
+           <router-link to="/" slot="left">
+                <mt-button icon="back">back</mt-button>
+            </router-link>
+        </mt-header>
      <section id="list-list" class="list-list">
         <ul class="list-ul clearfix">
           <li  @click="onDetail(item.productId)"  v-for="item in items" :key="item.productId" data-remaintime="" data-productcount="11 " data-issoldout="1" :data-productid="item.productId">

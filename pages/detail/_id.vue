@@ -25,7 +25,7 @@
             </div>
         </section>
         <div class="button-gropu">
-            <div class="buttom-item">
+            <div  @click="toCart" class="buttom-item">
                 <mt-button class="btn-item" type="default">Shop Cart [{{cartTotal}}]</mt-button>
             </div>
             <div @click="onAddCart" class="buttom-item">
@@ -84,8 +84,8 @@ export default {
         let totalPrice = 0;
         let totalNum = 0;
         for(let i = 0; i<list.length; i++){
-            totalNum = totalNum + parseInt(list[i].quantity);
-            totalPrice = totalNum + parseFloat(list[i].totalPrice);
+            totalNum = parseInt(totalNum) + parseInt(list[i].quantity);
+            totalPrice = parseFloat(totalPrice) + parseFloat(list[i].totalPrice);
         }
         return{
             totalPrice,
@@ -136,6 +136,9 @@ export default {
         }
       }
       return res;
+    },
+    toCart(){
+        this.$router.push({ path: "/cart" });
     }
   }
 };

@@ -24,12 +24,12 @@ export const mutations = {
         state.list[i] = item;
       }
     }
-  },
-  remove(state, item) {
+  }, 
+  remove(state, id) {
     //state.list.splice(state.list.indexOf(todo), 1)
     let res = false;
     for (let i = 0; i < state.list.length; i++) {
-      if (item.productSkuId === state.list[i].productSkuId) {
+      if (id === state.list[i].productSkuId) {
         state.list.splice(i, 1)
         res = true;
       }

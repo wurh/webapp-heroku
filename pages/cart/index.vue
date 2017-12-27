@@ -36,7 +36,7 @@
                                 Total: <em>${{totalPrice}}</em>
                             </p>
                     </div> 
-                    <a href="javascript:void(0)" class="btn-checkout">Checkout&nbsp;({{cartTotal}})</a>
+                    <a href="javascript:void(0)" @click="toCheckout" class="btn-checkout">Checkout&nbsp;({{cartTotal}})</a>
                 </div>
         </section>
   </section>
@@ -86,6 +86,9 @@ export default {
       let resobj = this.getCartTotal(this.carts);
       this.cartTotal = resobj.totalNum;
       this.totalPrice = resobj.totalPrice;
+    },
+    toCheckout(){
+       this.$router.push({ path: '/checkout' })
     }
   }
 };

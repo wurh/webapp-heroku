@@ -2,7 +2,7 @@
    <section class="container">
         <mt-header fixed title="Register Page">
         </mt-header>
-  
+        
     </section>
 </template>
 

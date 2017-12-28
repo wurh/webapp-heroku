@@ -35,5 +35,8 @@ export const mutations = {
       }
       return res;
     }
+  },
+  removeAll(state){
+    state.list = [];
   }
 }

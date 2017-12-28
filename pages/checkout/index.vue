@@ -52,7 +52,7 @@
         Total (Excluding Tax)
             ${{totalPrice}}
     </p>
-    <div id="goto-stage-2" class="btn-next-stage">Proceed to Payment</div>
+    <div id="goto-stage-2" @click="onPay" class="btn-next-stage">Proceed to Payment</div>
 </div>
 </section>
   </section>
@@ -96,6 +96,10 @@ export default {
         totalPrice,
         totalNum
       };
+    },
+    onPay(){
+      this.$store.commit("cart/removeAll");
+       this.$router.push({ path: '/paysuccess' })
     }
   }
 };

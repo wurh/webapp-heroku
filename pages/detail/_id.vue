@@ -39,6 +39,7 @@
 <script>
 import detailFunc from "../../mock/detailData";
 import { mapMutations } from "vuex";
+import localStore from "../../components/c-util/c-localstore";
 export default {
   data() {
     return {
@@ -93,6 +94,13 @@ export default {
         }
     },
     onAddCart() {
+      let store = window.localStorage;
+      let userId = localStore.get(store,'userid');
+      if(!userId){
+         let currentPath = this.$route.path;
+         this.$router.push({ path: "/login?redirect=" + currentPath });
+         return;
+      }
       let id = this.detailObj.productId;
       let result = this.isHas(this.carts, id);
       let item = this.detailObj;

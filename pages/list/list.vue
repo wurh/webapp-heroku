@@ -33,15 +33,35 @@
 
 <script>
 import listData from "../../mock/list";
+import listGA from "../../components/g-com/g-list";
 export default {
   data() {
     return {
       items: listData.items
     };
   },
+  mounted(){
+    let items = this.items;
+    listGA.onListLoadFire('list1',items);
+  },
   methods: {
     onDetail(id) {
+      let res = this.getItemIndex(id);
       this.$router.push({ path: "/detail/" + id });
+      listGA.listClick(res.item,res.index);
+    },
+    getItemIndex(id){
+      let arr = this.items;
+      let res={};
+      for(let i = 0; i < arr.length; i++){
+        if(id === arr[i].productId){
+          res = {
+            index:i,
+            item:arr[i]
+          }
+        }
+      }
+      return res;
     }
   }
 };

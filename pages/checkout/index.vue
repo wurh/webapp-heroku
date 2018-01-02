@@ -60,6 +60,7 @@
 
 <script>
 import { mapMutations } from "vuex";
+import payGA from "../../components/g-com/g-paysuccess";
 export default {
   data() {
     return {
@@ -98,6 +99,11 @@ export default {
       };
     },
     onPay(){
+      payGA.onPaySuccess({
+            'payment': 'paypel', 
+            'purchaseTimes': 1, //总购买次数, 
+            'purchaseAmount':this.totalPrice, //历史订单总金额 
+      },this.carts)
       this.$store.commit("cart/removeAll");
        this.$router.push({ path: '/paysuccess' })
     }

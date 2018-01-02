@@ -33,7 +33,7 @@
 
 <script>
 import indexData from "../mock/home";
-
+import promoteGA from "../components/g-com/g-promote";
 export default {
   data() {
     return {
@@ -43,7 +43,11 @@ export default {
   components: {},
   methods:{
       toList(){
-          console.log('tiao le !!!');
+         // console.log('tiao le !!!');
+         promoteGA.onPromoteFired({
+             id:'111',
+             name:'boot banner'
+         })
           this.$router.push({ path: '/list/list' })
       }
   }

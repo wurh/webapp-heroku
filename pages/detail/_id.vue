@@ -41,12 +41,13 @@ import detailFunc from "../../mock/detailData";
 import { mapMutations } from "vuex";
 import localStore from "../../components/c-util/c-localstore";
 import cookie from "../../components/c-util/c-cookie";
+import cartGA from "../../components/g-com/g-cart";
 export default {
   data() {
     return {
       successPop: false,
       failPop: false,
-      cartTotal:0,
+      cartTotal: 0,
       detailObj: {}
     };
   },
@@ -61,9 +62,9 @@ export default {
       this.detailObj = detailFunc.getDetailById(detailId);
     }
   },
-  mounted(){
-    let resobj = this.getCartTotal(this.carts)
-    this.cartTotal = resobj.totalNum
+  mounted() {
+    let resobj = this.getCartTotal(this.carts);
+    this.cartTotal = resobj.totalNum;
   },
   watch: {
     successPop(val) {
@@ -82,27 +83,27 @@ export default {
     }
   },
   methods: {
-    getCartTotal(list){
-        let totalPrice = 0;
-        let totalNum = 0;
-        for(let i = 0; i<list.length; i++){
-            totalNum = parseInt(totalNum) + parseInt(list[i].quantity);
-            totalPrice = parseFloat(totalPrice) + parseFloat(list[i].totalPrice);
-        }
-        return{
-            totalPrice,
-            totalNum
-        }
+    getCartTotal(list) {
+      let totalPrice = 0;
+      let totalNum = 0;
+      for (let i = 0; i < list.length; i++) {
+        totalNum = parseInt(totalNum) + parseInt(list[i].quantity);
+        totalPrice = parseFloat(totalPrice) + parseFloat(list[i].totalPrice);
+      }
+      return {
+        totalPrice,
+        totalNum
+      };
     },
     onAddCart() {
       let store = window.localStorage;
       //let userId = localStore.get(store,'userid');
-      let userId = cookie.getCookie('userid');
-      console.log('userId : '+ userId);
-      if(!userId){
-         let currentPath = this.$route.path;
-         this.$router.push({ path: "/login?redirect=" + currentPath });
-         return;
+      let userId = cookie.getCookie("userid");
+      console.log("userId : " + userId);
+      if (!userId) {
+        let currentPath = this.$route.path;
+        this.$router.push({ path: "/login?redirect=" + currentPath });
+        return;
       }
       let id = this.detailObj.productId;
       let result = this.isHas(this.carts, id);
@@ -131,13 +132,18 @@ export default {
           quantity: item.quantity,
           sellPrice: item.sellPrice,
           title: item.productName,
-          totalPrice: item.totalPrice
+          totalPrice: item.totalPrice,
+          variant: item.variant,
+          productId: item.productId,
+          categoryName: item.categoryName,
+          dimension: item.dimension
         };
         this.$store.commit("cart/update", localItem);
         this.successPop = true;
       }
-        let resobj = this.getCartTotal(this.carts)
-        this.cartTotal = resobj.totalNum
+      cartGA.addToCart(item)
+      let resobj = this.getCartTotal(this.carts);
+      this.cartTotal = resobj.totalNum;
     },
     isHas(list, id) {
       let res;
@@ -148,8 +154,8 @@ export default {
       }
       return res;
     },
-    toCart(){
-        this.$router.push({ path: "/cart" });
+    toCart() {
+      this.$router.push({ path: "/cart" });
     }
   }
 };
@@ -274,7 +280,8 @@ export default {
   width: 100%;
 }
 
-.successPop, .failPop{
+.successPop,
+.failPop {
   width: 100%;
   height: 50px;
   text-align: center;
@@ -282,7 +289,8 @@ export default {
   backface-visibility: hidden;
 }
 
-.successPop p ,.failPop p {
+.successPop p,
+.failPop p {
   line-height: 50px;
   color: #fff;
 }

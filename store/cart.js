@@ -16,6 +16,10 @@ export const mutations = {
       sellPrice: item.sellPrice,
       title: item.productName,
       totalPrice: item.totalPrice,
+      variant:item.variant,
+      productId:item.productId,
+      categoryName:item.categoryName,
+      dimension:item.dimension
     })
   },
   update(state, item) { //更新购物车列表

@@ -16,6 +16,7 @@
 <script>
 import { mapMutations } from "vuex";
 import localStore from "../../components/c-util/c-localstore";
+import cookie from "../../components/c-util/c-cookie";
 export default {
   data() {
     return {
@@ -29,6 +30,7 @@ export default {
       let userId = new Date().getTime();
       let store = window.localStorage;
       localStore.set(store, "userid", userId);
+      cookie.setCookie('userid',userId,30);
       localStore.set(store, "user", {
         username: this.username,
         password: this.password,

@@ -40,6 +40,7 @@
 import detailFunc from "../../mock/detailData";
 import { mapMutations } from "vuex";
 import localStore from "../../components/c-util/c-localstore";
+import cookie from "../../components/c-util/c-cookie";
 export default {
   data() {
     return {
@@ -95,7 +96,9 @@ export default {
     },
     onAddCart() {
       let store = window.localStorage;
-      let userId = localStore.get(store,'userid');
+      //let userId = localStore.get(store,'userid');
+      let userId = cookie.getCookie('userid');
+      console.log('userId : '+ userId);
       if(!userId){
          let currentPath = this.$route.path;
          this.$router.push({ path: "/login?redirect=" + currentPath });

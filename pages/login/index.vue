@@ -17,6 +17,7 @@
 import { mapMutations } from "vuex";
 import localStore from "../../components/c-util/c-localstore";
 import cookie from "../../components/c-util/c-cookie";
+import loginGA from "../../components/g-com/g-login";
 export default {
   data() {
     return {
@@ -37,6 +38,7 @@ export default {
         email: this.email,
         id: userId
       });
+      loginGA.onLoginFire('normal',userId)
       let path = "/";
       if (this.$route.query && this.$route.query.redirect) {
         path = this.$route.query.redirect;

@@ -14,7 +14,7 @@ export default {
             'ecommerce': { 
                 'purchase': { 
                     'actionField': {
-                        'id':'T12345',
+                        'id':new Date().getTime(),
                         'affiliation': 'Online Store',
                         'revenue': '35.43', 
                         'tax':'4.90',

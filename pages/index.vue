@@ -34,6 +34,7 @@
 <script>
 import indexData from "../mock/home";
 import promoteGA from "../components/g-com/g-promote";
+import pageviewGA from "../components/g-com/g-pageview";
 export default {
   data() {
     return {
@@ -41,6 +42,9 @@ export default {
     };
   },
   components: {},
+  mounted(){
+      pageviewGA.onPageViewFired('index');
+  },
   methods:{
       toList(){
          // console.log('tiao le !!!');

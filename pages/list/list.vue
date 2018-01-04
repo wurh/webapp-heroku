@@ -34,6 +34,7 @@
 <script>
 import listData from "../../mock/list";
 import listGA from "../../components/g-com/g-list";
+import pageviewGA from "../../components/g-com/g-pageview";
 export default {
   data() {
     return {
@@ -43,12 +44,13 @@ export default {
   mounted(){
     let items = this.items;
     listGA.onListLoadFire('list1',items);
+    pageviewGA.onPageViewFired('list')
   },
   methods: {
     onDetail(id) {
       let res = this.getItemIndex(id);
-      this.$router.push({ path: "/detail/" + id });
       listGA.listClick(res.item,res.index);
+      this.$router.push({ path: "/detail/" + id });
     },
     getItemIndex(id){
       let arr = this.items;

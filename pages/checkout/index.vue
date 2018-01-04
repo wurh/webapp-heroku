@@ -61,6 +61,7 @@
 <script>
 import { mapMutations } from "vuex";
 import payGA from "../../components/g-com/g-paysuccess";
+import pageviewGA from "../../components/g-com/g-pageview";
 export default {
   data() {
     return {
@@ -77,6 +78,7 @@ export default {
     let resobj = this.getCartTotal(this.carts);
     this.cartTotal = resobj.totalNum;
     this.totalPrice = resobj.totalPrice;
+    pageviewGA.onPageViewFired('checkout');
   },
   created() {
     console.log(this.carts);

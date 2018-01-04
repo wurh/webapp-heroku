@@ -42,6 +42,7 @@ import { mapMutations } from "vuex";
 import localStore from "../../components/c-util/c-localstore";
 import cookie from "../../components/c-util/c-cookie";
 import cartGA from "../../components/g-com/g-cart";
+import pageviewGA from "../../components/g-com/g-pageview";
 export default {
   data() {
     return {
@@ -65,6 +66,7 @@ export default {
   mounted() {
     let resobj = this.getCartTotal(this.carts);
     this.cartTotal = resobj.totalNum;
+    pageviewGA.onPageViewFired('detail')
   },
   watch: {
     successPop(val) {

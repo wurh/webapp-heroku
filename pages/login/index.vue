@@ -18,6 +18,7 @@ import { mapMutations } from "vuex";
 import localStore from "../../components/c-util/c-localstore";
 import cookie from "../../components/c-util/c-cookie";
 import loginGA from "../../components/g-com/g-login";
+import pageviewGA from "../../components/g-com/g-pageview";
 export default {
   data() {
     return {
@@ -25,6 +26,9 @@ export default {
       password: "",
       email: ""
     };
+  },
+  mounted(){
+    pageviewGA.onPageViewFired('login');
   },
   methods: {
     onLogin() {

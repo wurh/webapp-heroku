@@ -13,10 +13,14 @@
 
 <script>
 import { mapMutations } from "vuex";
+import pageviewGA from "../../components/g-com/g-pageview";
 export default {
   data() {
     return {
     };
+  },
+  mounted(){
+    pageviewGA.onPageViewFired('paysuccess');
   },
   methods: {
       toHome(){

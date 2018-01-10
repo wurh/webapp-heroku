@@ -14,13 +14,17 @@
 <script>
 import { mapMutations } from "vuex";
 import pageviewGA from "../../components/g-com/g-pageview";
+import localStore from "../../components/c-util/c-localstore";
 export default {
   data() {
     return {
     };
   },
   mounted(){
-    pageviewGA.onPageViewFired('paysuccess');
+   let store = window.localStorage;
+   let carts = localStore.get(store, "payproducts");
+    pageviewGA.onPageViewFired('paysuccess',carts);
+    localStore.remove(store, "payproducts");
   },
   methods: {
       toHome(){

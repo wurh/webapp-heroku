@@ -4,6 +4,7 @@
 export default {
     
     onPaySuccess(data,items) {
+        console.log(items);
       if (window && window.dataLayer) {
         let dataLayer = window.dataLayer;
         dataLayer.push({

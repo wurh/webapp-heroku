@@ -42,6 +42,7 @@ import { mapMutations } from "vuex";
 import localStore from "../../components/c-util/c-localstore";
 import cookie from "../../components/c-util/c-cookie";
 import cartGA from "../../components/g-com/g-cart";
+import detailGA from "../../components/g-com/g-detail";
 import pageviewGA from "../../components/g-com/g-pageview";
 export default {
   data() {
@@ -66,7 +67,20 @@ export default {
   mounted() {
     let resobj = this.getCartTotal(this.carts);
     this.cartTotal = resobj.totalNum;
-    pageviewGA.onPageViewFired('detail')
+    let items = [];
+    console.log(this.detailObj);
+    let _me = this;
+    items.push({
+      brand: _me.detailObj.brandName,
+      category: _me.detailObj.categoryName,
+      dimension1: _me.detailObj.dimension,
+      id: _me.detailObj.productId,
+      name: _me.detailObj.productName,
+      price: _me.detailObj.sellPrice,
+      variant: _me.detailObj.variant
+    });
+    detailGA.onDetailLoadFire(items);
+    pageviewGA.onPageViewFired("detail");
   },
   watch: {
     successPop(val) {
@@ -143,7 +157,7 @@ export default {
         this.$store.commit("cart/update", localItem);
         this.successPop = true;
       }
-      cartGA.addToCart(item)
+      cartGA.addToCart(item);
       let resobj = this.getCartTotal(this.carts);
       this.cartTotal = resobj.totalNum;
     },

@@ -62,6 +62,7 @@
 import { mapMutations } from "vuex";
 import payGA from "../../components/g-com/g-paysuccess";
 import pageviewGA from "../../components/g-com/g-pageview";
+import localStore from "../../components/c-util/c-localstore";
 export default {
   data() {
     return {
@@ -106,8 +107,12 @@ export default {
             'purchaseTimes': 1, //总购买次数, 
             'purchaseAmount':this.totalPrice, //历史订单总金额 
       },this.carts)
+      let store = window.localStorage;
+      localStore.set(store, "payproducts",{
+        carts:this.carts
+      });
       this.$store.commit("cart/removeAll");
-       this.$router.push({ path: '/paysuccess' })
+      this.$router.push({ path: '/paysuccess' })
     }
   }
 };

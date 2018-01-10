@@ -42,95 +42,106 @@ export default {
     };
   },
   components: {},
-  mounted(){
-      pageviewGA.onPageViewFired('index');
+  mounted() {
+    pageviewGA.onPageViewFired("index");
+    let promoteArr = [];
+    promoteArr.push({
+      id: "111", // ID or Name is required.
+      name: "boot banner",
+      creative: "banner1",
+      position: "slot1"
+    });
+    promoteGA.onPromoteView(promoteArr);
   },
-  methods:{
-      toList(){
-         // console.log('tiao le !!!');
-         promoteGA.onPromoteFired({
-             id:'111',
-             name:'boot banner'
-         })
-          this.$router.push({ path: '/list/list' })
-      }
+  methods: {
+    toList() {
+      // console.log('tiao le !!!');
+      promoteGA.onPromoteFired({
+        id: "111",
+        name: "boot banner"
+      });
+
+      this.$router.push({ path: "/list/list" });
+    }
   }
 };
 </script>
 
 <style scoped>
-.index-list{
+.index-list {
   margin-top: 80px;
 }
 .page-title {
-    background: #fff;
-    padding: 1.29rem;
+  background: #fff;
+  padding: 1.29rem;
 }
 .page-title .top-title-wrapper {
-    text-align: center;
-    margin-bottom: .29rem;
+  text-align: center;
+  margin-bottom: 0.29rem;
 }
 .page-title .top-title-wrapper img {
-    display: inline-block;
-    width: 2.86rem;
-    height: 1.07rem;
-    vertical-align: middle;
+  display: inline-block;
+  width: 2.86rem;
+  height: 1.07rem;
+  vertical-align: middle;
 }
 .page-title .top-title-wrapper p {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #333;
-    vertical-align: middle;
-    display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  vertical-align: middle;
+  display: inline-block;
 }
 .page-title .sub-title {
-    font-size: 1.07rem;
-    color: #666;
-    text-align: center;
+  font-size: 1.07rem;
+  color: #666;
+  text-align: center;
 }
-menu, ol, ul {
-    list-style: none;
+menu,
+ol,
+ul {
+  list-style: none;
 }
-layoutImg.off {
-    display: none;
+layoutimg.off {
+  display: none;
 }
 .layoutImg {
-    color: #ccc;
-    background: #efefef;
-    font-size: 1.5625rem;
-    font-weight: 700;
-    text-align: center;
+  color: #ccc;
+  background: #efefef;
+  font-size: 1.5625rem;
+  font-weight: 700;
+  text-align: center;
 }
 .index-topic-wrap {
-    padding: .75rem 0;
-    background-color: #fff;
-    text-align: center;
+  padding: 0.75rem 0;
+  background-color: #fff;
+  text-align: center;
 }
 .index-topic-wrap .index-topic-title {
-    font-size: 1rem;
-    color: #333;
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: .3rem;
-    line-height: 1.19rem;
-    min-height: 1.19rem;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  line-height: 1.19rem;
+  min-height: 1.19rem;
 }
 .index-topic-wrap .activeThirdName {
-    margin-right: .75rem;
+  margin-right: 0.75rem;
 }
 .index-topic-wrap span {
-    font-size: .81rem;
-    color: #f22796;
+  font-size: 0.81rem;
+  color: #f22796;
 }
 .index-topic-wrap .topic-time {
-    font-size: .81rem;
-    color: #999;
-    line-height: 1rem;
-    min-height: 1rem;
-    display: inline-block;
+  font-size: 0.81rem;
+  color: #999;
+  line-height: 1rem;
+  min-height: 1rem;
+  display: inline-block;
 }
-.index-topics-last div{
-  text-align: center
+.index-topics-last div {
+  text-align: center;
 }
 </style>
 

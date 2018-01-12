@@ -102,6 +102,7 @@ export default {
       };
     },
     onPay(){
+      payGA.onPayFired(this.carts)
       payGA.onPaySuccess({
             'payment': 'paypel', 
             'purchaseTimes': 1, //总购买次数, 

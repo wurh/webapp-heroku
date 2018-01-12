@@ -2,6 +2,24 @@
  * 支付成功对象
  */
 export default {
+    //点击支付出发
+    onPayFired(items){
+        if (window && window.dataLayer) {
+            let dataLayer = window.dataLayer;
+            dataLayer.push({
+              'event': 'pay',
+              'ecommerce': {
+                'checkout': {
+                  'actionField': {
+                    'step': 2,
+                    'option': 'paypal'
+                  },
+                  'products': items
+                }
+              }
+            })
+          }
+    },
     
     onPaySuccess(data,items) {
         console.log(items);

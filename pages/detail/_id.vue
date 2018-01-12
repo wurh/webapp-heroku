@@ -112,6 +112,7 @@ export default {
       };
     },
     onAddCart() {
+      console.log(111);
       let store = window.localStorage;
       //let userId = localStore.get(store,'userid');
       let userId = cookie.getCookie("userid");
@@ -171,6 +172,7 @@ export default {
       return res;
     },
     toCart() {
+            console.log(222);
       this.$router.push({ path: "/cart" });
     }
   }

@@ -12,7 +12,7 @@ export default {
           'checkout': {
             'actionField': {
               'step': 1,
-              'option': 'payple'
+              'option': 'paypal'
             },
             'products': items
           }

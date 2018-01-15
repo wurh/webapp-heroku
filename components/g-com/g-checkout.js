@@ -14,7 +14,7 @@ export default {
               'step': 1,
               'option': 'paypal'
             },
-            'products': items
+            'products': this.getCheckoutProducts(items)
           }
         }
       })
@@ -26,7 +26,7 @@ export default {
     for(let i = 0 ; i <items.length; i++){
         let item = items[i]
         arr.push({
-            'name': item.productName,
+            'name': item.title,
             'id': item.productId,
             'price': item.sellPrice,
             'brand': item.brandName,
@@ -38,5 +38,6 @@ export default {
             'dimension1': item.dimension == 'Y' ? 'Promotion' : 'Normal'
         })
     }
+    return arr;
   }
 }

@@ -14,7 +14,7 @@ export default {
                     'step': 2,
                     'option': 'paypal'
                   },
-                  'products': items
+                  'products': this.getPayProducts(items)
                 }
               }
             })
